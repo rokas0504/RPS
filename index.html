@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let randomItem = 0;
+        let weapon = 0;
+        let returnas = 0;
+        let rez = 0;
+        game();
+        
+        function getComputerChoice(){
+            const C = [
+            'rock',
+            'paper',
+            'scissors'
+        ];
+            randomItem = C[Math.floor(Math.random()*C.length)];
+            
+            
+        }
+        ///////////////////////////////////
+        function playerSelection(){
+            let  Aweapon = prompt("Choose between - Rock, Paper or Scissors");
+             weapon = Aweapon.toLowerCase();
+             
+        }
+        
+        ///////////////////////////////////////
+        function SelectionA(){
+            if(randomItem == weapon){
+                rez = 0;
+                returnas = "it's a tie!";
+                return(returnas);
+            }
+            else if(randomItem == "rock" && weapon == "paper"){
+                rez = 1;
+                returnas = "You win, paper beats rock";
+                return(returnas);
+            }
+            else if (randomItem == "rock" && weapon == "scissors"){
+                rez = -1;
+                returnas = "You loose, rock beats scissors";
+                return(returnas);
+            }
+            else if (randomItem == "paper" && weapon == "rock"){
+                rez = -1;
+                returnas = "You loose, paper beats rock";
+                return(returnas);
+            }
+            else if (randomItem == "paper" && weapon == "scissors"){
+                rez = 1;
+                returnas = "You win, scissors beats rock";
+                return(returnas);
+            }
+            else if (randomItem == "scissors" && weapon == "rock"){
+                rez = 1;
+                returnas = "You win, rock beats scissors";
+                return(returnas);
+            }
+            else if (randomItem == "scissors" && weapon == "paper"){
+                rez = -1;
+                returnas = "You loose, scissors beats paper";
+                return(returnas);
+            }
+            //////////////////////////////////////////
+        }
+        
+        function game(){
+            let player = 5;
+            let computer =5;
+            for(let i =0; i<5; i++){
+                rez = 0;
+                getComputerChoice();
+                playerSelection();
+                SelectionA();
+                
+                
+                if(rez == 1){
+                    console.log(returnas);
+                    console.log( "Computer looses one life");
+                    computer--;
+                }
+                else if(rez == -1){
+                    console.log(returnas);
+                    console.log( "You loose one life")
+                    player--;
+                }
+                else{
+                    console.log("its, a tie");
+                    player--;
+                    computer--;
+                }
+            }
+            if(computer > player){
+                alert("Computer won, better try again!");
+            }
+            else if(player > computer){
+                alert("You won, congratulations!");
+            }
+            else{
+                alert("Tie");
+            }
+        }
+    </script>
+</body>
+</html>
